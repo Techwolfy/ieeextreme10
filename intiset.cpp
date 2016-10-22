@@ -24,7 +24,10 @@ int main() {
 	long s = 0;
 	long t = 0;
 	long long sum = 0;
-	int incVal = 1;
+	bool skip2 = false;
+	bool skip3 = false;
+	bool skip5 = false;
+	bool skip7 = false;
 
 	cin >> numTestCases;
 	for(int testCase = 0; testCase < numTestCases; testCase++) {
@@ -34,11 +37,16 @@ int main() {
 		s = 0;
 		t = 0;
 		sum = 0;
-		incVal = 1;
-		if(n % 2 == 0) {
-			incVal = 2;
-		}
-		for(long i = a; i <= b; i += incVal) {
+
+		skip2 = n % 2 == 0;
+		skip3 = n % 3 == 0;
+		skip5 = n % 5 == 0;
+		skip7 = n % 7 == 0;
+		for(long i = a, j = 0; i <= b; i++) {
+			if(skip2 && i % 2 == 0) {continue;}
+			if(skip3 && i % 3 == 0) {continue;}
+			if(skip5 && i % 5 == 0) {continue;}
+			if(skip7 && i % 7 == 0) {continue;}
 			if(extGCD(i, n, &s, &t) == 1) {
 				sum += i;
 			}
