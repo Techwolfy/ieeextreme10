@@ -24,6 +24,7 @@ int main() {
 	long s = 0;
 	long t = 0;
 	long long sum = 0;
+	int incVal = 1;
 
 	cin >> numTestCases;
 	for(int testCase = 0; testCase < numTestCases; testCase++) {
@@ -33,7 +34,11 @@ int main() {
 		s = 0;
 		t = 0;
 		sum = 0;
-		for(long i = a; i <= b; i++) {
+		incVal = 1;
+		if(n % 2 == 0) {
+			incVal = 2;
+		}
+		for(long i = a; i <= b; i += incVal) {
 			if(extGCD(i, n, &s, &t) == 1) {
 				sum += i;
 			}
