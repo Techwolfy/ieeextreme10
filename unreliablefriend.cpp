@@ -10,8 +10,10 @@ enum balloon_t {RGB = 0, R, G, B, RG, RB, GB};
 int main() {
 	int numTestCases = 0;
 	int numQuestions = 0, numLies = 0;
-	string questionType;
-	string answer;
+	char color = 0;
+	int balloonNum = 0;
+	string question;
+	string str;
 	balloon_t balloons[10];
 
 	cin >> numTestCases;
@@ -25,11 +27,20 @@ int main() {
 
 		for(int question = 0; question < numQuestions; question++) {
 			//For each question...
-			cin >> questionType;
+			if(numLies == 0) {
+				getline(cin, question);
+				istringstream line(question);
+				while(cin >> str) {
+					if(questionType == "color") {
+						cin >> balloonNum;
+						cin >> color;
+					}
+					cin >> answer;
+				}
+			}
 			//TODO: Important bit
 			//TODO: Important bit
 			//TODO: Important bit
-			cin >> answer;
 		}
 
 		for(int i = 0; i < 10; i++) {
